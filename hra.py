@@ -18,5 +18,5 @@ def main():
 
     dny = 0
     while dny < 14:
-        print(f"Peníze: {osoba.money} Kč, Inventář: {[predmet.jmeno for predmet in osoba.inventar]}")
+        print(f"Peníze: {osoba.money} Kč, Inventář: {[predmet.name for predmet in osoba.inventar]}")
         print(f"\n{dny}/14 dnů - Lokace: {lokace[0].name}")
