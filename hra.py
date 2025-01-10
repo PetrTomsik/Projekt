@@ -4,6 +4,7 @@ from predmet import Predmet
 import random
 
 def main():
+    #Inicializace
     predmety = [
         Predmet("Utopenec", 50, 100),
         Predmet("Med", 100, 200),
@@ -12,7 +13,8 @@ def main():
     lokace = [
         Lokace("Hradčany", predmety),
         Lokace("Václavák", predmety),
-        Lokace("Holešovice", predmety)
+        Lokace("Holešovice", predmety),
+        Lokace("Večerka", [])
     ]
     hrac = Hrac(input("Zadej jméno: "))
 
