@@ -8,6 +8,5 @@ class Predmet:
         self.aktualni_cena = random.randint(self.min_cena, self.max_cena)
 
     def aktualizuj_cenu(self):
-        znema = random.randint(-5, 5)
-        self.aktualni_cena += znema
-
+        zmena = random.randint(-5, 5)
+        self.aktualni_cena = max(self.min_cena, min(self.max_cena, self.aktualni_cena + zmena))

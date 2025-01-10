@@ -12,13 +12,16 @@ class Lokace:
     def koupit_predmet(self, jmeno_predmetu, hrac):
         for predmet in self.predmety:
             if predmet.jmeno == jmeno_predmetu and hrac.penize >= predmet.aktualni_cena:
-                hrac.koupit(predmet, predmet.aktualni_cena)
+                if len(hrac.inventar) < hrac.max_velikost_inventare:
+                    hrac.koupit(predmet, predmet.aktualni_cena)
+                else:
+                    print("Není místo v inventáři.")
                 return
         print("Nemáš dost peněz.")
 
-    def prodat_predmet(self, jmeno_predmetu, hrac):
-        for predmet in self.predmety:
-            if predmet.jmeno == jmeno_predmetu and predmet in hrac.inventar:
+    def prodat_predmet(self, nazev_predmetu, hrac):
+        for predmet in hrac.inventar:
+            if predmet.jmeno == nazev_predmetu:
                 hrac.prodat(predmet, predmet.aktualni_cena)
                 return
         print("Nemáš tento předmět v inventáři.")
