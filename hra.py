@@ -1,10 +1,10 @@
 from hrac import Hrac
 from lokace import Lokace
 from predmet import Predmet
-import random
 
 def main():
     #Inicializace
+    '''
     predmetyHradcany = [
         Predmet("Utopenec", 50, 100),
         Predmet("Med", 100, 200),
@@ -20,10 +20,16 @@ def main():
         Predmet("Med", 100, 200),
         Predmet("Láhev pálavy", 200, 500)
     ]
+    '''
+    predmety = [
+        Predmet("Utopenec", 50, 100),
+        Predmet("Med", 100, 200),
+        Predmet("Láhev pálavy", 200, 500)
+    ]
     lokace = [
-        Lokace("Hradčany", predmetyHradcany),
-        Lokace("Václavák", predmetyVaclavak),
-        Lokace("Holešovice", predmetyHolesovice),
+        Lokace("Hradčany", predmety),
+        Lokace("Václavák", predmety),
+        Lokace("Holešovice", predmety),
         Lokace("Večerka", [])
     ]
     hrac = Hrac(input("Zadej jméno: "))
@@ -51,11 +57,11 @@ def main():
             akce = input(f"Co cheš dělat? (1 - Prodat / 2 - Koupit)")
 
             if akce == '1':
-                nazev_predmetu  = input(f"Co chceš prodat? ")
-                aktualni_lokace.prodat_predmet(nazev_predmetu, hrac)
+                jmeno_predmetu  = input(f"Co chceš prodat? ")
+                aktualni_lokace.prodat_predmet(jmeno_predmetu, hrac)
             elif akce == '2':
-                nazev_predmetu = input("Co chceš koupit? ")
-                aktualni_lokace.koupit_predmet(nazev_predmetu, hrac)
+                jmeno_predmetu = input("Co chceš koupit? ")
+                aktualni_lokace.koupit_predmet(jmeno_predmetu, hrac)
 
     print(f"\nHra skončila. Zbylo Vám {hrac.penize} Kč.")
     with open("highscores.txt", "a") as file:

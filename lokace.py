@@ -1,9 +1,10 @@
 from predmet import Predmet
+import random
 
 class Lokace:
     def __init__(self, jmeno, predmety):
         self.jmeno = jmeno
-        self.predmety = predmety
+        self.predmety = [Predmet(predmet.jmeno, predmet.min_cena, predmet.max_cena) for predmet in predmety]
 
     def aktualizuj_ceny(self):
         for predmet in self.predmety:
@@ -19,9 +20,11 @@ class Lokace:
                 return
         print("Nemáš dost peněz.")
 
-    def prodat_predmet(self, nazev_predmetu, hrac):
+    def prodat_predmet(self, jmeno_predmetu, hrac):
         for predmet in hrac.inventar:
-            if predmet.jmeno == nazev_predmetu:
-                hrac.prodat(predmet, predmet.aktualni_cena)
-                return
-        print("Nemáš tento předmět v inventáři.")
+            if predmet.jmeno == jmeno_predmetu:
+                for predmet_lokace in self.predmety:
+                    if predmet_lokace.jmeno == jmeno_predmetu:
+                        hrac.prodat(predmet, predmet_lokace.aktualni_cena)
+                        return
+        print("Nemáte tento předmět k prodeji.")
