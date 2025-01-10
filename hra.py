@@ -5,15 +5,25 @@ import random
 
 def main():
     #Inicializace
-    predmety = [
+    predmetyHradcany = [
+        Predmet("Utopenec", 50, 100),
+        Predmet("Med", 100, 200),
+        Predmet("Láhev pálavy", 200, 500)
+    ]
+    predmetyVaclavak = [
+        Predmet("Utopenec", 50, 100),
+        Predmet("Med", 100, 200),
+        Predmet("Láhev pálavy", 200, 500)
+    ]
+    predmetyHolesovice = [
         Predmet("Utopenec", 50, 100),
         Predmet("Med", 100, 200),
         Predmet("Láhev pálavy", 200, 500)
     ]
     lokace = [
-        Lokace("Hradčany", predmety),
-        Lokace("Václavák", predmety),
-        Lokace("Holešovice", predmety),
+        Lokace("Hradčany", predmetyHradcany),
+        Lokace("Václavák", predmetyVaclavak),
+        Lokace("Holešovice", predmetyHolesovice),
         Lokace("Večerka", [])
     ]
     hrac = Hrac(input("Zadej jméno: "))
