@@ -1,5 +1,4 @@
 from predmet import Predmet
-import random
 
 class Lokace:
     def __init__(self, jmeno, predmety):
