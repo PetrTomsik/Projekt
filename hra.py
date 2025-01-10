@@ -64,7 +64,7 @@ def main():
                 aktualni_lokace.koupit_predmet(jmeno_predmetu, hrac)
 
     print(f"\nHra skončila. Zbylo Vám {hrac.penize} Kč.")
-    with open("highscores.txt", "a") as file:
+    with open("highscores.txt", "a", encoding='utf-8') as file:
         file.write(f"{hrac.jmeno}: {hrac.penize} Kč\n")
     print("Žebříček:")
     with open("highscores.txt", "r") as file:
