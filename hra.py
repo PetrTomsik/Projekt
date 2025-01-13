@@ -1,26 +1,47 @@
+from werkzeug.datastructures import IfRange
+
 from hrac import Hrac
 from lokace import Lokace
 from predmet import Predmet
+import random
+
+#Odměna (najde peníze)
+#Krádež (přijde o peníze)
+#Sleva v lokaci
+#Nic
+#Policie sebere předmět
+#Policie obdaruje hráče
+
+def udalost(hrac, aktualni_lokace):
+    udalosti = [
+        "odměna", "krádež", "sleva", "nic", "zabavení", "obdarování"
+    ]
+    vyber = random.choice(udalosti)
+    if vyber == "odměna":
+        castka = random.randint(0, 100)
+        hrac.penize += castka
+        print(f"Gratulace! Našel jsi {castka} Kč.")
+
+    elif vyber == "krádež":
+        if hrac.penize >= 50:
+            castka = hrac.penize // 10
+            hrac.penize -= castka
+            print(f"Jejda, pocestný bezďák ti vzal {castka} Kč.")
+        else:
+            return
+
+    elif vyber == "sleva":
+        print(f"Dočasná sleva v lokaci {aktualni_lokace.jmeno}! Ceny se snižují o 10%.")
+        for predmet in aktualni_lokace.predmety:
+            predmet.aktualni_cena = int(predmet.aktualni_cena * 0.9)
+
+    return udalosti[vyber]
+
+
+
 
 def main():
     #Inicializace
-    '''
-    predmetyHradcany = [
-        Predmet("Utopenec", 50, 100),
-        Predmet("Med", 100, 200),
-        Predmet("Láhev pálavy", 200, 500)
-    ]
-    predmetyVaclavak = [
-        Predmet("Utopenec", 50, 100),
-        Predmet("Med", 100, 200),
-        Predmet("Láhev pálavy", 200, 500)
-    ]
-    predmetyHolesovice = [
-        Predmet("Utopenec", 50, 100),
-        Predmet("Med", 100, 200),
-        Predmet("Láhev pálavy", 200, 500)
-    ]
-    '''
     predmety = [
         Predmet("Utopenec", 50, 100),
         Predmet("Med", 100, 200),
